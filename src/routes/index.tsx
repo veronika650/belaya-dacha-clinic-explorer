@@ -13,6 +13,7 @@ import {
   Sparkles,
   Stethoscope,
   X,
+  type LucideIcon,
 } from "lucide-react";
 import { useState } from "react";
 
@@ -31,6 +32,12 @@ const services = [
   { number: "04", title: "Протезирование", text: "Коронки, виниры, съёмные и несъёмные конструкции." },
   { number: "05", title: "Ортодонтия", text: "Исправление прикуса с помощью брекетов и элайнеров." },
   { number: "06", title: "Хирургия и диагностика", text: "Удаление зубов, костная пластика, снимки и компьютерная томография." },
+];
+
+const benefits: Array<{ icon: LucideIcon; title: string; text: string }> = [
+  { icon: ShieldCheck, title: "Бережный подход", text: "Обсуждаем каждый шаг лечения" },
+  { icon: Stethoscope, title: "Всё в одном месте", text: "От диагностики до восстановления" },
+  { icon: CalendarDays, title: "Удобная запись", text: "Работаем ежедневно до 20:00" },
 ];
 
 export const Route = createFileRoute("/")({
@@ -123,14 +130,10 @@ function Index() {
 
       <section className="border-b border-border bg-secondary">
         <div className="mx-auto grid max-w-7xl grid-cols-1 divide-y divide-border px-5 sm:grid-cols-3 sm:divide-x sm:divide-y-0 lg:px-8">
-          {[
-            [ShieldCheck, "Бережный подход", "Обсуждаем каждый шаг лечения"],
-            [Stethoscope, "Всё в одном месте", "От диагностики до восстановления"],
-            [CalendarDays, "Удобная запись", "Работаем ежедневно до 20:00"],
-          ].map(([Icon, title, text]) => (
-            <div key={String(title)} className="flex items-start gap-4 py-6 sm:px-6 first:pl-0 last:pr-0">
+          {benefits.map(({ icon: Icon, title, text }) => (
+            <div key={title} className="flex items-start gap-4 py-6 sm:px-6 first:pl-0 last:pr-0">
               <Icon className="mt-0.5 size-5 shrink-0 text-primary" />
-              <div><p className="font-display text-sm font-semibold">{String(title)}</p><p className="mt-1 text-xs text-muted-foreground">{String(text)}</p></div>
+              <div><p className="font-display text-sm font-semibold">{title}</p><p className="mt-1 text-xs text-muted-foreground">{text}</p></div>
             </div>
           ))}
         </div>
