@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   ArrowDown,
   ArrowUpRight,
@@ -18,6 +18,7 @@ import {
 import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
 import clinicFacade from "@/assets/clinic-yandex-facade.jpg.asset.json";
 import clinicTreatment from "@/assets/clinic-yandex-treatment.jpg.asset.json";
 import clinicEntrance from "@/assets/clinic-yandex-entrance.jpg.asset.json";
@@ -58,9 +59,11 @@ function Index() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [bookingOpen, setBookingOpen] = useState(false);
   const [sent, setSent] = useState(false);
+  const [consentGiven, setConsentGiven] = useState(false);
 
   const openBooking = () => {
     setSent(false);
+    setConsentGiven(false);
     setBookingOpen(true);
   };
 
@@ -231,6 +234,7 @@ function Index() {
           <footer className="flex flex-col gap-3 pt-8 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
             <span className="font-display font-semibold text-foreground">Клиника на Белой Даче</span>
             <span>Информация на сайте не заменяет консультацию специалиста.</span>
+            <Link to="/privacy" className="underline underline-offset-4 hover:text-primary">Политика конфиденциальности</Link>
           </footer>
         </div>
       </section>
@@ -242,7 +246,7 @@ function Index() {
 
       {bookingOpen && (
         <div className="fixed inset-0 z-50 flex items-end justify-center bg-overlay/60 p-0 backdrop-blur-sm sm:items-center sm:p-5" role="dialog" aria-modal="true" aria-labelledby="booking-title">
-          <div className="w-full max-w-lg bg-background p-6 shadow-2xl sm:rounded-lg sm:p-8">
+          <div className="max-h-[90svh] w-full max-w-lg overflow-y-auto bg-background p-6 shadow-2xl sm:rounded-lg sm:p-8">
             <div className="flex items-start justify-between gap-4">
               <div><p className="section-label">Запись</p><h2 id="booking-title" className="mt-2 font-display text-2xl font-semibold">Записаться на приём</h2></div>
               <Button variant="ghost" size="icon" onClick={() => setBookingOpen(false)} aria-label="Закрыть"><X /></Button>
@@ -255,12 +259,19 @@ function Index() {
                 <Button asChild className="mt-6 h-12 px-6"><a href="tel:+79255572931"><Phone /> {phone}</a></Button>
               </div>
             ) : (
-              <form className="mt-7 space-y-4" onSubmit={(event) => { event.preventDefault(); setSent(true); }}>
+              <form className="mt-7 space-y-4" onSubmit={(event) => { event.preventDefault(); if (!consentGiven) return; setSent(true); }}>
                 <label className="block text-sm font-semibold">Ваше имя<input required name="name" className="mt-2 h-12 w-full rounded-md border border-input bg-background px-4 font-normal outline-none focus:border-primary focus:ring-2 focus:ring-ring/20" placeholder="Как к вам обращаться" /></label>
                 <label className="block text-sm font-semibold">Телефон<input required name="phone" type="tel" className="mt-2 h-12 w-full rounded-md border border-input bg-background px-4 font-normal outline-none focus:border-primary focus:ring-2 focus:ring-ring/20" placeholder="+7 (___) ___-__-__" /></label>
                 <label className="block text-sm font-semibold">Что вас интересует<select name="service" className="mt-2 h-12 w-full rounded-md border border-input bg-background px-4 font-normal outline-none focus:border-primary focus:ring-2 focus:ring-ring/20"><option>Консультация</option>{services.map((service) => <option key={service.number}>{service.title}</option>)}</select></label>
-                <Button type="submit" className="h-12 w-full text-base shadow-none">Отправить заявку</Button>
-                <p className="text-center text-xs leading-relaxed text-muted-foreground">Нажимая кнопку, вы соглашаетесь на обработку персональных данных.</p>
+                <div className="flex items-start gap-3">
+                  <Checkbox id="booking-consent" name="personalDataConsent" required checked={consentGiven} onCheckedChange={(checked) => setConsentGiven(checked === true)} className="mt-0.5 size-5" aria-labelledby="booking-consent-label" />
+                  <div className="text-xs leading-relaxed text-muted-foreground">
+                    <label id="booking-consent-label" htmlFor="booking-consent" className="cursor-pointer">Я согласен(на) с обработкой персональных данных.</label>{" "}
+                    <Link to="/personal-data-consent" target="_blank" rel="noopener noreferrer" className="text-primary underline underline-offset-4">Текст согласия</Link>
+                  </div>
+                </div>
+                <p className="text-xs leading-relaxed text-muted-foreground">Информация об обработке данных — в <Link to="/privacy" target="_blank" rel="noopener noreferrer" className="text-primary underline underline-offset-4">политике конфиденциальности</Link>.</p>
+                <Button type="submit" disabled={!consentGiven} className="h-12 w-full text-base shadow-none">Отправить заявку</Button>
               </form>
             )}
           </div>
