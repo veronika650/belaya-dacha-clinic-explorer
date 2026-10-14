@@ -1,0 +1,2 @@
+- [x] Add a public Documents page with four categories and links from site navigation and footer.
+- [ ] Publish license scan, clinic details, full price list and doctor qualifications — awaiting clinic-provided materials.

@@ -75,14 +75,15 @@ function Index() {
             Клиника на Белой Даче
             <span className="mt-0.5 block font-body text-[10px] font-semibold uppercase text-hero-foreground/65">Стоматология · Котельники</span>
           </a>
-          <nav className="hidden items-center gap-7 text-sm font-medium md:flex" aria-label="Основная навигация">
+          <nav className="hidden items-center gap-4 text-sm font-medium md:flex" aria-label="Основная навигация">
             <a href="#services" className="transition-opacity hover:opacity-65">Услуги</a>
             <a href="#approach" className="transition-opacity hover:opacity-65">О клинике</a>
             <a href="#reviews" className="transition-opacity hover:opacity-65">Отзывы</a>
             <a href="#contacts" className="transition-opacity hover:opacity-65">Контакты</a>
+            <Link to="/documents" className="transition-opacity hover:opacity-65">Документы</Link>
           </nav>
           <div className="hidden items-center gap-3 md:flex">
-            <a href="tel:+79255572931" className="text-sm font-semibold">{phone}</a>
+            <a href="tel:+79255572931" className="hidden text-sm font-semibold lg:block">{phone}</a>
             <Button onClick={openBooking} className="h-10 bg-accent px-5 text-accent-foreground shadow-none hover:bg-accent/90">Записаться</Button>
           </div>
           <Button variant="ghost" size="icon" onClick={() => setMenuOpen((value) => !value)} className="text-hero-foreground hover:bg-hero-foreground/10 hover:text-hero-foreground md:hidden" aria-label={menuOpen ? "Закрыть меню" : "Открыть меню"}>
@@ -95,6 +96,7 @@ function Index() {
               {[['Услуги', '#services'], ['О клинике', '#approach'], ['Отзывы', '#reviews'], ['Контакты', '#contacts']].map(([label, href]) => (
                 <a key={href} href={href} onClick={() => setMenuOpen(false)}>{label}</a>
               ))}
+              <Link to="/documents" onClick={() => setMenuOpen(false)}>Документы</Link>
             </div>
           </nav>
         )}
@@ -234,6 +236,7 @@ function Index() {
           <footer className="flex flex-col gap-3 pt-8 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
             <span className="font-display font-semibold text-foreground">Клиника на Белой Даче</span>
             <span>Информация на сайте не заменяет консультацию специалиста.</span>
+            <Link to="/documents" className="underline underline-offset-4 hover:text-primary">Документы</Link>
             <Link to="/privacy" className="underline underline-offset-4 hover:text-primary">Политика конфиденциальности</Link>
           </footer>
         </div>
