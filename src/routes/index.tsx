@@ -18,9 +18,9 @@ import {
 import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
-import clinicInterior from "@/assets/clinic-interior.jpg.asset.json";
-import dentistCare from "@/assets/dentist-care.jpg.asset.json";
-import dentistPortrait from "@/assets/dentist-portrait.jpg.asset.json";
+import clinicFacade from "@/assets/clinic-yandex-facade.jpg.asset.json";
+import clinicTreatment from "@/assets/clinic-yandex-treatment.jpg.asset.json";
+import clinicEntrance from "@/assets/clinic-yandex-entrance.jpg.asset.json";
 
 const phone = "+7 (925) 557-29-31";
 const mapUrl = "https://yandex.ru/maps/-/CXEhFCMJ";
@@ -98,7 +98,7 @@ function Index() {
       </header>
 
       <section id="top" className="relative flex min-h-[92svh] items-end overflow-hidden text-hero-foreground">
-        <img src={clinicInterior.url} alt="Светлый современный стоматологический кабинет" width={1600} height={1104} className="absolute inset-0 h-full w-full object-cover object-center" />
+        <img src={clinicFacade.url} alt="Фасад Клиники на Белой Даче на Кузьминской улице, 15 — фото из Яндекс Карт" width={1600} height={1200} className="absolute inset-0 h-full w-full object-cover object-center" />
         <div className="absolute inset-0 bg-hero-overlay" />
         <div className="relative mx-auto w-full max-w-7xl px-5 pb-12 pt-28 lg:px-8 lg:pb-16">
           <div className="max-w-4xl">
@@ -164,7 +164,7 @@ function Index() {
       <section id="approach" className="scroll-mt-20 bg-primary text-primary-foreground">
         <div className="mx-auto grid max-w-7xl lg:grid-cols-2">
           <div className="relative min-h-[420px] lg:min-h-[680px]">
-            <img src={dentistCare.url} alt="Бережное общение врача и пациента" loading="lazy" width={1408} height={1008} className="absolute inset-0 h-full w-full object-cover" />
+            <img src={clinicTreatment.url} alt="Процедурный кабинет Клиники на Белой Даче — фото из Яндекс Карт" loading="lazy" width={1536} height={1024} className="absolute inset-0 h-full w-full object-contain" />
           </div>
           <div className="flex flex-col justify-between px-5 py-14 lg:px-16 lg:py-20">
             <div>
@@ -205,7 +205,7 @@ function Index() {
       <section className="bg-secondary px-5 py-20 lg:px-8 lg:py-24">
         <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.7fr_1.3fr] lg:items-center">
           <div className="relative mx-auto w-full max-w-sm overflow-hidden rounded-[2px] lg:mx-0">
-            <img src={dentistPortrait.url} alt="Врач стоматолог в светлом кабинете" loading="lazy" width={912} height={1200} className="aspect-[3/4] w-full object-cover" />
+            <img src={clinicEntrance.url} alt="Вход в Клинику на Белой Даче — фото из Яндекс Карт" loading="lazy" width={1024} height={1536} className="aspect-[2/3] w-full object-cover" />
             <span className="absolute bottom-3 left-3 bg-background/85 px-3 py-2 text-[10px] font-semibold uppercase text-muted-foreground backdrop-blur">Забота в каждой детали</span>
           </div>
           <div className="lg:pl-10">

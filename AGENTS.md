@@ -8,3 +8,5 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Reference downloaded website photographs through Lovable Assets JSON pointers; keep original downloads outside the repository to preserve lightweight source delivery.
