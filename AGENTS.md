@@ -10,3 +10,4 @@
 <!-- LOVABLE:END -->
 
 - Reference downloaded website photographs through Lovable Assets JSON pointers; keep original downloads outside the repository to preserve lightweight source delivery.
+- Keep privacy and personal-data consent documents on separate public routes using the shared LegalPage layout; describe the actual form behavior rather than claiming transmission or storage that does not exist.
