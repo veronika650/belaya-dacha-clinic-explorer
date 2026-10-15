@@ -22,18 +22,10 @@ import { Checkbox } from "@/components/ui/checkbox";
 import clinicFacade from "@/assets/clinic-yandex-facade.jpg.asset.json";
 import clinicTreatment from "@/assets/clinic-yandex-treatment.jpg.asset.json";
 import clinicEntrance from "@/assets/clinic-yandex-entrance.jpg.asset.json";
+import { services } from "@/lib/services";
 
 const phone = "+7 (925) 557-29-31";
 const mapUrl = "https://yandex.ru/maps/-/CXEhFCMJ";
-
-const services = [
-  { number: "01", title: "Лечение зубов", text: "Кариес, пульпит, лечение каналов и эстетические реставрации." },
-  { number: "02", title: "Гигиена и отбеливание", text: "Профессиональная чистка и бережное осветление эмали." },
-  { number: "03", title: "Имплантация", text: "Восстановление зубов с точным планированием результата." },
-  { number: "04", title: "Протезирование", text: "Коронки, виниры, съёмные и несъёмные конструкции." },
-  { number: "05", title: "Ортодонтия", text: "Исправление прикуса с помощью брекетов и элайнеров." },
-  { number: "06", title: "Хирургия и диагностика", text: "Удаление зубов, костная пластика, снимки и компьютерная томография." },
-];
 
 const benefits: Array<{ icon: LucideIcon; title: string; text: string }> = [
   { icon: ShieldCheck, title: "Бережный подход", text: "Обсуждаем каждый шаг лечения" },
@@ -157,12 +149,12 @@ function Index() {
           </div>
           <div className="mt-12 border-t border-border">
             {services.map((service) => (
-              <button key={service.number} onClick={openBooking} className="group grid w-full grid-cols-[2.5rem_1fr_auto] items-center gap-3 border-b border-border py-5 text-left transition-colors hover:bg-secondary sm:grid-cols-[4rem_0.8fr_1.2fr_auto] sm:gap-6 sm:px-4 sm:py-7">
+              <Link key={service.number} to="/services/$slug" params={{ slug: service.slug }} className="group grid w-full grid-cols-[2.5rem_1fr_auto] items-center gap-3 border-b border-border py-5 text-left transition-colors hover:bg-secondary sm:grid-cols-[4rem_0.8fr_1.2fr_auto] sm:gap-6 sm:px-4 sm:py-7">
                 <span className="font-display text-xs font-semibold text-accent-strong">{service.number}</span>
                 <span className="font-display text-base font-semibold sm:text-lg">{service.title}</span>
                 <span className="hidden text-sm leading-relaxed text-muted-foreground sm:block">{service.text}</span>
                 <span className="grid size-9 place-items-center rounded-full border border-border transition-colors group-hover:border-primary group-hover:bg-primary group-hover:text-primary-foreground"><ChevronRight className="size-4" /></span>
-              </button>
+              </Link>
             ))}
           </div>
         </div>

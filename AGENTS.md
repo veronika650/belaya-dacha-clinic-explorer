@@ -13,3 +13,4 @@
 - Keep privacy and personal-data consent documents on separate public routes using the shared LegalPage layout; describe the actual form behavior rather than claiming transmission or storage that does not exist.
 - Keep clinic documents on the public /documents route using LegalPage; mark missing materials as unpublished and never fabricate official records or download links.
 - Keep doctor profiles on the public /doctors route; publish only individually verified staff information and clearly mark missing materials as unpublished to avoid misrepresenting medical credentials.
+- Define service content in a shared browser-safe catalog and render individual /services/$slug pages through one shared template; reject unknown slugs and derive unique metadata from the catalog to keep navigation and descriptions consistent.
