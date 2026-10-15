@@ -75,9 +75,10 @@ function Index() {
             Клиника на Белой Даче
             <span className="mt-0.5 block font-body text-[10px] font-semibold uppercase text-hero-foreground/65">Стоматология · Котельники</span>
           </a>
-          <nav className="hidden items-center gap-4 text-sm font-medium md:flex" aria-label="Основная навигация">
+          <nav className="hidden items-center gap-3 text-sm font-medium md:flex" aria-label="Основная навигация">
             <a href="#services" className="transition-opacity hover:opacity-65">Услуги</a>
             <a href="#approach" className="transition-opacity hover:opacity-65">О клинике</a>
+            <Link to="/doctors" className="transition-opacity hover:opacity-65">Врачи</Link>
             <a href="#reviews" className="transition-opacity hover:opacity-65">Отзывы</a>
             <a href="#contacts" className="transition-opacity hover:opacity-65">Контакты</a>
             <Link to="/documents" className="transition-opacity hover:opacity-65">Документы</Link>
@@ -97,6 +98,7 @@ function Index() {
                 <a key={href} href={href} onClick={() => setMenuOpen(false)}>{label}</a>
               ))}
               <Link to="/documents" onClick={() => setMenuOpen(false)}>Документы</Link>
+              <Link to="/doctors" onClick={() => setMenuOpen(false)}>Врачи</Link>
             </div>
           </nav>
         )}
@@ -233,9 +235,10 @@ function Index() {
               <div><p className="text-xs font-semibold uppercase text-muted-foreground">На карте</p><a href={mapUrl} target="_blank" rel="noreferrer" className="mt-2 inline-flex items-center gap-2 font-display text-lg font-semibold text-primary">Построить маршрут <ArrowUpRight className="size-4" /></a></div>
             </div>
           </div>
-          <footer className="flex flex-col gap-3 pt-8 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
+          <footer className="flex flex-col gap-3 pt-8 text-xs text-muted-foreground sm:flex-row sm:flex-wrap sm:items-center sm:justify-between">
             <span className="font-display font-semibold text-foreground">Клиника на Белой Даче</span>
             <span>Информация на сайте не заменяет консультацию специалиста.</span>
+            <Link to="/doctors" className="underline underline-offset-4 hover:text-primary">Врачи</Link>
             <Link to="/documents" className="underline underline-offset-4 hover:text-primary">Документы</Link>
             <Link to="/privacy" className="underline underline-offset-4 hover:text-primary">Политика конфиденциальности</Link>
           </footer>
