@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as DoctorsRouteImport } from './routes/doctors'
 import { Route as DocumentsRouteImport } from './routes/documents'
 import { Route as PersonalDataConsentRouteImport } from './routes/personal-data-consent'
 import { Route as PrivacyRouteImport } from './routes/privacy'
@@ -17,6 +18,11 @@ import { Route as PrivacyRouteImport } from './routes/privacy'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DoctorsRoute = DoctorsRouteImport.update({
+  id: '/doctors',
+  path: '/doctors',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DocumentsRoute = DocumentsRouteImport.update({
@@ -37,12 +43,14 @@ const PrivacyRoute = PrivacyRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/doctors': typeof DoctorsRoute
   '/documents': typeof DocumentsRoute
   '/personal-data-consent': typeof PersonalDataConsentRoute
   '/privacy': typeof PrivacyRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/doctors': typeof DoctorsRoute
   '/documents': typeof DocumentsRoute
   '/personal-data-consent': typeof PersonalDataConsentRoute
   '/privacy': typeof PrivacyRoute
@@ -50,20 +58,29 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/doctors': typeof DoctorsRoute
   '/documents': typeof DocumentsRoute
   '/personal-data-consent': typeof PersonalDataConsentRoute
   '/privacy': typeof PrivacyRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/documents' | '/personal-data-consent' | '/privacy'
+  fullPaths:
+    '/' | '/doctors' | '/documents' | '/personal-data-consent' | '/privacy'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/documents' | '/personal-data-consent' | '/privacy'
-  id: '__root__' | '/' | '/documents' | '/personal-data-consent' | '/privacy'
+  to: '/' | '/doctors' | '/documents' | '/personal-data-consent' | '/privacy'
+  id:
+    | '__root__'
+    | '/'
+    | '/doctors'
+    | '/documents'
+    | '/personal-data-consent'
+    | '/privacy'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  DoctorsRoute: typeof DoctorsRoute
   DocumentsRoute: typeof DocumentsRoute
   PersonalDataConsentRoute: typeof PersonalDataConsentRoute
   PrivacyRoute: typeof PrivacyRoute
@@ -76,6 +93,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/doctors': {
+      id: '/doctors'
+      path: '/doctors'
+      fullPath: '/doctors'
+      preLoaderRoute: typeof DoctorsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/documents': {
@@ -104,6 +128,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  DoctorsRoute: DoctorsRoute,
   DocumentsRoute: DocumentsRoute,
   PersonalDataConsentRoute: PersonalDataConsentRoute,
   PrivacyRoute: PrivacyRoute,
