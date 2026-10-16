@@ -86,13 +86,12 @@ function Index() {
         {menuOpen && (
           <nav className="border-t border-hero-foreground/15 bg-hero px-5 py-5 md:hidden" aria-label="Мобильная навигация">
             <div className="grid gap-4 text-base font-medium">
-              {[['О клинике', '#approach'], ['Услуги', '#services'], ['Врачи', '/doctors'], ['Документы', '/documents'], ['Отзывы', '#reviews'], ['Контакты', '#contacts']].map(([label, href]) =>
-                href.startsWith('#') ? (
-                  <a key={href} href={href} onClick={() => setMenuOpen(false)}>{label}</a>
-                ) : (
-                  <Link key={href} to={href} onClick={() => setMenuOpen(false)}>{label}</Link>
-                ),
-              )}
+              <a href="#approach" onClick={() => setMenuOpen(false)}>О клинике</a>
+              <a href="#services" onClick={() => setMenuOpen(false)}>Услуги</a>
+              <Link to="/doctors" onClick={() => setMenuOpen(false)}>Врачи</Link>
+              <Link to="/documents" onClick={() => setMenuOpen(false)}>Документы</Link>
+              <a href="#reviews" onClick={() => setMenuOpen(false)}>Отзывы</a>
+              <a href="#contacts" onClick={() => setMenuOpen(false)}>Контакты</a>
             </div>
           </nav>
         )}
