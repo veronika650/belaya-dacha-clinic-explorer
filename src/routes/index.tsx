@@ -68,12 +68,12 @@ function Index() {
             <span className="mt-0.5 block font-body text-[10px] font-semibold uppercase text-hero-foreground/65">Стоматология · Котельники</span>
           </a>
           <nav className="hidden items-center gap-3 text-sm font-medium md:flex" aria-label="Основная навигация">
-            <a href="#services" className="transition-opacity hover:opacity-65">Услуги</a>
             <a href="#approach" className="transition-opacity hover:opacity-65">О клинике</a>
+            <a href="#services" className="transition-opacity hover:opacity-65">Услуги</a>
             <Link to="/doctors" className="transition-opacity hover:opacity-65">Врачи</Link>
+            <Link to="/documents" className="transition-opacity hover:opacity-65">Документы</Link>
             <a href="#reviews" className="transition-opacity hover:opacity-65">Отзывы</a>
             <a href="#contacts" className="transition-opacity hover:opacity-65">Контакты</a>
-            <Link to="/documents" className="transition-opacity hover:opacity-65">Документы</Link>
           </nav>
           <div className="hidden items-center gap-3 md:flex">
             <a href="tel:+79255572931" className="hidden text-sm font-semibold lg:block">{phone}</a>
@@ -86,11 +86,13 @@ function Index() {
         {menuOpen && (
           <nav className="border-t border-hero-foreground/15 bg-hero px-5 py-5 md:hidden" aria-label="Мобильная навигация">
             <div className="grid gap-4 text-base font-medium">
-              {[['Услуги', '#services'], ['О клинике', '#approach'], ['Отзывы', '#reviews'], ['Контакты', '#contacts']].map(([label, href]) => (
-                <a key={href} href={href} onClick={() => setMenuOpen(false)}>{label}</a>
-              ))}
-              <Link to="/documents" onClick={() => setMenuOpen(false)}>Документы</Link>
-              <Link to="/doctors" onClick={() => setMenuOpen(false)}>Врачи</Link>
+              {[['О клинике', '#approach'], ['Услуги', '#services'], ['Врачи', '/doctors'], ['Документы', '/documents'], ['Отзывы', '#reviews'], ['Контакты', '#contacts']].map(([label, href]) =>
+                href.startsWith('#') ? (
+                  <a key={href} href={href} onClick={() => setMenuOpen(false)}>{label}</a>
+                ) : (
+                  <Link key={href} to={href} onClick={() => setMenuOpen(false)}>{label}</Link>
+                ),
+              )}
             </div>
           </nav>
         )}
