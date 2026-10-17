@@ -1,14 +1,18 @@
-# Welcome to your Lovable project
+# Клиника на Белой даче
+
+Создай крутой сайт для клиники на белой даче, сделай его живым и очень интересным. Всю информацию и фотографии можешь взять отсюда https://yandex.ru/maps/-/CXEhFCMJ
 
 This project was built with [Lovable](https://lovable.dev).
 
+**Live app**: https://belaya-dacha-clinic-explorer.lovable.app
+
 ## Build with Lovable
 
-Open your project in the [Lovable editor](https://lovable.dev) and keep building.
+Continue developing this project in the [Lovable editor](https://lovable.dev/projects/adf34ad7-9d91-42e4-a7e6-d20848cf7125).
 
 - **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: connect the project to GitHub and every change made in Lovable is committed straight to your repository.
-- **Full ownership**: this code is yours. Push to your repository and your changes sync back into Lovable, ready for your next prompt.
+- **Stay in sync**: every change made in Lovable is committed straight to this repository.
+- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
 
 ## Development
 
@@ -20,10 +24,3 @@ cd <repository-name>
 npm i
 npm run dev
 ```
-
-## Built with
-
-- TanStack Start
-- TypeScript
-- React
-- Tailwind CSS
